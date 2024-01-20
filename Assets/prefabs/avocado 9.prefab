@@ -138,6 +138,12 @@ MonoBehaviour:
   - {fileID: 7641821206423737614}
   - {fileID: 6594487887099886270, guid: 7e60edc311215ea4e8efb2b951fd01da, type: 3}
   - {fileID: 8058685467948602239, guid: a069a4f8a20782f4e8ca0a6bb1d72cb0, type: 3}
+  dangerHeight: 12
+  dangerTime: 5
+  countdownText: {fileID: 0}
+  scoreText: {fileID: 3209410385760982221, guid: 12963948f1c89d14ab034946abf63f41, type: 3}
+  mergePoints: 050000000a0000000f00000014000000190000001e00000023000000280000002d0000003200000037000000
+  popSound: {fileID: 8920628992746755729, guid: f173df2468073524183f402d2867f25a, type: 3}
 --- !u!60 &-1052390942777773469
 PolygonCollider2D:
   m_ObjectHideFlags: 0

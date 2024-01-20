@@ -103,7 +103,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 24b23b00f8d129e4d964a794e390f748, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -231,17 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d7f65af5e721848911ea658f5be695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vegetableTags:
-  - white
-  - turnip
-  - kalafjor
-  - garlic
-  - potato
-  - shroom
-  - paprika
-  - avocado
-  - tomato
-  - pumpkin
   vegetables:
   - {fileID: 396408919896819707, guid: 2ff08c31c7e16ee458bd68d8eb78b92a, type: 3}
   - {fileID: 1846466965933821020, guid: 560121ee5a51647419a10df3e302da95, type: 3}
@@ -254,3 +243,9 @@ MonoBehaviour:
   - {fileID: 7641821206423737614, guid: 6cb04dc44440c4d4385631b3e5e9df08, type: 3}
   - {fileID: 6594487887099886270, guid: 7e60edc311215ea4e8efb2b951fd01da, type: 3}
   - {fileID: 8058685467948602239, guid: a069a4f8a20782f4e8ca0a6bb1d72cb0, type: 3}
+  dangerHeight: 12
+  dangerTime: 5
+  countdownText: {fileID: 0}
+  scoreText: {fileID: 0}
+  mergePoints: 050000000a0000000f00000014000000190000001e00000023000000280000002d0000003200000037000000
+  popSound: {fileID: 8920628992746755729, guid: f173df2468073524183f402d2867f25a, type: 3}

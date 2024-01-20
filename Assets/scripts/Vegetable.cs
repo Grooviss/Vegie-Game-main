@@ -1,41 +1,109 @@
 using UnityEngine;
+using TMPro;
+
 
 public class VegetableCollision : MonoBehaviour
 {
     public GameObject[] vegetables;
+    public float dangerHeight = 12f;
+    public float dangerTime = 5f;
+    public TMP_Text countdownText;
+    public TMP_Text scoreText;
 
+    private bool inDanger;
+    private float dangerTimer;
+    private bool spawned = false;
+    public int[] mergePoints;
+    private float lastMergeTime;
+    public AudioSource popSound;
+    // Use a static variable for the score
+    public static int score = 0;
 
-
-    private void OnCollisionEnter2D(Collision2D col)
+    void Start()
     {
-        if (col.gameObject.CompareTag(gameObject.tag))
+        scoreText = GameObject.Find("Score").GetComponent<TMP_Text>();
+
+        mergePoints = new int[vegetables.Length];
+        mergePoints[0] = 5;
+        mergePoints[1] = 10;
+        mergePoints[2] = 15;
+        mergePoints[3] = 20;
+        mergePoints[4] = 25;
+        mergePoints[5] = 30;
+        mergePoints[6] = 35;
+        mergePoints[7] = 40;
+        mergePoints[8] = 45;
+        mergePoints[9] = 50;
+        mergePoints[10] = 55;
+        popSound = gameObject.AddComponent<AudioSource>();
+        popSound.clip = Resources.Load<AudioClip>("pop");
+    }
+
+    void Update()
+    {
+        if (transform.position.y > 50f || transform.position.y < -50f)
         {
-            // Get the index of the current vegetable in the array
-            int currentIndex = GetVegetableIndex(gameObject.tag);
-
-            // Calculate the next index in a circular manner
-            int nextIndex = (currentIndex + 1) % vegetables.Length;
-
-            // Get the next vegetable prefab from the array
-            GameObject nextVegetablePrefab = vegetables[nextIndex];
-
-            // Calculate the combined vegetable position
-            Vector2 newPosition = (transform.position + col.transform.position) / 2f;
-
-            // Instantiate the next vegetable at the combined position
-            Instantiate(nextVegetablePrefab, newPosition, Quaternion.identity);
-
-            // Set the flag to true to prevent further combinations until the next collision
-
-            // Destroy the original vegetables
             Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (Time.time - lastMergeTime > 1f)
+        {
+            if (col.gameObject.CompareTag(gameObject.tag) && !spawned)
+            {
+                GameObject veggie1 = gameObject;
+                GameObject veggie2 = col.gameObject;
+
+                int veggie1Index = GetVegetableIndex(veggie1.tag);
+                int veggie2Index = GetVegetableIndex(veggie2.tag);
+
+                GameObject newVeg = SpawnMergedVeggie(veggie1, veggie2);
+
+                int newVeggieIndex = GetVegetableIndex(newVeg.tag);
+
+                // Increment the static score variable
+                score += mergePoints[veggie1Index] + mergePoints[veggie2Index];
+
+                // Update the scoreText
+                scoreText.text = score.ToString();
+                popSound.Play();
+                lastMergeTime = Time.time;
+                
+            }
+        }
+
+        if (col.transform.position.y > 50f || col.transform.position.y < -50f)
+        {
             Destroy(col.gameObject);
         }
     }
 
-    private int GetVegetableIndex(string tag)
+    GameObject SpawnMergedVeggie(GameObject veggie1, GameObject veggie2)
     {
-        // Find the index of the vegetable based on its tag
+        int veggie1Index = GetVegetableIndex(veggie1.tag);
+        int nextIndex = (veggie1Index + 1) % vegetables.Length;
+
+        GameObject nextVeggie = vegetables[nextIndex];
+
+        Vector2 position = (veggie1.transform.position + veggie2.transform.position) / 2;
+
+        GameObject newVeg = Instantiate(nextVeggie, position, Quaternion.identity);
+
+        veggie1.transform.position = Vector2.one * 100;
+        veggie2.transform.position = Vector2.one * 100;
+
+        return newVeg;
+    }
+
+    void LateUpdate()
+    {
+        spawned = false;
+    }
+
+    int GetVegetableIndex(string tag)
+    {
         for (int i = 0; i < vegetables.Length; i++)
         {
             if (vegetables[i].CompareTag(tag))
@@ -43,8 +111,6 @@ public class VegetableCollision : MonoBehaviour
                 return i;
             }
         }
-
-        // Return -1 if the tag is not found
         return -1;
     }
 }
