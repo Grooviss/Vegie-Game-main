@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3529833086878741286}
   - component: {fileID: -8702005635350060392}
   - component: {fileID: -8102540319126833786}
+  - component: {fileID: -5143457197394063064}
   m_Layer: 0
-  m_Name: kalafjoras 3
-  m_TagString: Vegetable
+  m_Name: Kalafjor
+  m_TagString: kalafjor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,3 +217,38 @@ PolygonCollider2D:
       - {x: -0.39999998, y: -1.26}
       - {x: -0.32, y: -1.3}
   m_UseDelaunayMesh: 0
+--- !u!114 &-5143457197394063064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663272962814526793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d7f65af5e721848911ea658f5be695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vegetableTags:
+  - white
+  - turnip
+  - kalafjor
+  - garlic
+  - potato
+  - shroom
+  - paprika
+  - avocado
+  - tomato
+  - pumpkin
+  vegetables:
+  - {fileID: 396408919896819707, guid: 2ff08c31c7e16ee458bd68d8eb78b92a, type: 3}
+  - {fileID: 1846466965933821020, guid: 560121ee5a51647419a10df3e302da95, type: 3}
+  - {fileID: 663272962814526793}
+  - {fileID: 1721581643147952763, guid: 1ad748165fcc951449e8d03e52c498c7, type: 3}
+  - {fileID: 7450984505844528287, guid: 55228d3535ec9d44f8b3ddfba4151960, type: 3}
+  - {fileID: 2464892915323112856, guid: 9fe3f0fe42601964090bfe7b5b60c0cc, type: 3}
+  - {fileID: 2178203917657285756, guid: 114b9fc7721674e44ab0d5ba44542aca, type: 3}
+  - {fileID: 7736340834475782338, guid: 2ff55760b00014b41b6406fd7b54189d, type: 3}
+  - {fileID: 7641821206423737614, guid: 6cb04dc44440c4d4385631b3e5e9df08, type: 3}
+  - {fileID: 6594487887099886270, guid: 7e60edc311215ea4e8efb2b951fd01da, type: 3}
+  - {fileID: 8058685467948602239, guid: a069a4f8a20782f4e8ca0a6bb1d72cb0, type: 3}
