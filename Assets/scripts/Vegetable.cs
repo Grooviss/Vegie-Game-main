@@ -5,8 +5,6 @@ using TMPro;
 public class VegetableCollision : MonoBehaviour
 {
     public GameObject[] vegetables;
-    public float dangerHeight = 12f;
-    public float dangerTime = 5f;
     public TMP_Text countdownText;
     public TMP_Text scoreText;
 
@@ -15,7 +13,7 @@ public class VegetableCollision : MonoBehaviour
     private bool spawned = false;
     public int[] mergePoints;
     private float lastMergeTime;
-    public AudioSource popSound;
+    
     // Use a static variable for the score
     public static int score = 0;
 
@@ -35,8 +33,7 @@ public class VegetableCollision : MonoBehaviour
         mergePoints[8] = 45;
         mergePoints[9] = 50;
         mergePoints[10] = 55;
-        popSound = gameObject.AddComponent<AudioSource>();
-        popSound.clip = Resources.Load<AudioClip>("pop");
+        
     }
 
     void Update()
@@ -68,7 +65,7 @@ public class VegetableCollision : MonoBehaviour
 
                 // Update the scoreText
                 scoreText.text = score.ToString();
-                popSound.Play();
+                AudioManager.PlayMergeSound();
                 lastMergeTime = Time.time;
                 
             }
