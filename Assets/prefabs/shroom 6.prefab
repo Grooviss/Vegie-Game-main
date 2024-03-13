@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: 4793397a4adb467468ab575b618e9204, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d490bb47372fda439cac933dd4243e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,7 +150,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 5}
+    oldSize: {x: 7, y: 7}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -269,9 +269,6 @@ MonoBehaviour:
   - {fileID: 7641821206423737614, guid: 6cb04dc44440c4d4385631b3e5e9df08, type: 3}
   - {fileID: 6594487887099886270, guid: 7e60edc311215ea4e8efb2b951fd01da, type: 3}
   - {fileID: 8058685467948602239, guid: a069a4f8a20782f4e8ca0a6bb1d72cb0, type: 3}
-  dangerHeight: 12
-  dangerTime: 5
   countdownText: {fileID: 0}
   scoreText: {fileID: 4400891296352648084, guid: 5de874e8a5c4f0b499d87a34bd9a0d89, type: 3}
   mergePoints: 050000000a0000000f00000014000000190000001e00000023000000280000002d0000003200000037000000
-  popSound: {fileID: 8920628992746755729, guid: f173df2468073524183f402d2867f25a, type: 3}

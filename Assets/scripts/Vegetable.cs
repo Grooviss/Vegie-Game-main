@@ -1,20 +1,16 @@
 using UnityEngine;
 using TMPro;
 
-
 public class VegetableCollision : MonoBehaviour
 {
     public GameObject[] vegetables;
-    public TMP_Text countdownText;
     public TMP_Text scoreText;
 
-    private bool inDanger;
-    private float dangerTimer;
     private bool spawned = false;
     public int[] mergePoints;
     private float lastMergeTime;
-    
-    // Use a static variable for the score
+
+
     public static int score = 0;
 
     void Start()
@@ -33,7 +29,7 @@ public class VegetableCollision : MonoBehaviour
         mergePoints[8] = 45;
         mergePoints[9] = 50;
         mergePoints[10] = 55;
-        
+
     }
 
     void Update()
@@ -60,14 +56,14 @@ public class VegetableCollision : MonoBehaviour
 
                 int newVeggieIndex = GetVegetableIndex(newVeg.tag);
 
-                // Increment the static score variable
+
                 score += mergePoints[veggie1Index] + mergePoints[veggie2Index];
 
-                // Update the scoreText
+
                 scoreText.text = score.ToString();
                 AudioManager.PlayMergeSound();
                 lastMergeTime = Time.time;
-                
+
             }
         }
 

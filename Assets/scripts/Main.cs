@@ -10,7 +10,7 @@ public class Main : MonoBehaviour
     public int[] veggiePoints;
     public int points;
     private float moveSpeed = 5f;
-    private float borderX = 12f;
+    private float borderX = 11.5f;
     public TMP_Text pointsText;
     public static Main instance;
     private bool canMove = true;
@@ -18,6 +18,11 @@ public class Main : MonoBehaviour
     public Vector2 holderOffset = new Vector2(1f, 1f);
     public float poleYOffset = 0.5f;
     public GameObject pole;
+    public float[] veggieSizes;
+    public Transform objecttocheck;
+    public Transform Line;
+    private float vegetableTimer = 0f;
+    private float maxVegetableTime = 5f;
 
     void Start()
     {
@@ -34,8 +39,12 @@ public class Main : MonoBehaviour
             {
                 DropVegetable();
             }
+            CheckVegetableTime();
         }
+        
+
     }
+   
 
     void SpawnVegetable()
     {
@@ -52,7 +61,7 @@ public class Main : MonoBehaviour
         nextVegetablePrefab = vegetables[Random.Range(0, 5)];
 
        
-        nextVegetable = Instantiate(nextVegetablePrefab, new Vector2(19f, 10f), Quaternion.identity);
+        nextVegetable = Instantiate(nextVegetablePrefab, new Vector2(21f, 11f), Quaternion.identity);
         Rigidbody2D nextRigidbody2D = nextVegetable.GetComponent<Rigidbody2D>();
 
         if (nextRigidbody2D != null)
@@ -100,8 +109,42 @@ public class Main : MonoBehaviour
 
         Invoke("SpawnNextVegetable", 2f);
     }
+    void CheckVegetableTime()
+    {
+       
+        if (currentVegetable != null)
+        {
+            
+            if (currentVegetable.transform.position.y < 5f) 
+            {
+                vegetableTimer += Time.deltaTime;
 
-    void SpawnNextVegetable()
+                
+                if (vegetableTimer >= maxVegetableTime)
+                {
+                   
+                    EndGame();
+                }
+            }
+            else
+            {
+               
+                vegetableTimer = 0f;
+            }
+        }
+    }
+
+    void EndGame()
+    {
+        
+        Debug.Log("Game Over");
+        
+    }
+
+    
+
+
+void SpawnNextVegetable()
     {
         Destroy(nextVegetable); 
 
@@ -122,7 +165,7 @@ public class Main : MonoBehaviour
         Destroy(nextVegetable);
 
        
-        nextVegetable = Instantiate(nextVegetablePrefab, new Vector2(19f, 10f), Quaternion.identity);
+        nextVegetable = Instantiate(nextVegetablePrefab, new Vector2(21f, 11f), Quaternion.identity);
         Rigidbody2D nextRigidbody2D = nextVegetable.GetComponent<Rigidbody2D>();
 
         if (nextRigidbody2D != null)
